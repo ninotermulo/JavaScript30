@@ -42,34 +42,43 @@
         return true; 
       }
     });
-    
+  
     // 2. Give us an array of the inventors first and last names
     const alpha = inventors.map((obj) => `${obj.first} ${obj.last}`);
 
     // 3. Sort the inventors by birthdate, oldest to youngest
     const sorted = inventors.sort((objA, objB) => objA.year > objB.year ? 1: -1);
-    console.log(sorted);
 
     // 4. How many years did all the inventors live all together?
     // reduce()
-
-
+    const totalAge = inventors.reduce((total, obj) => {
+      return total + obj.passed - obj.year;
+    },0);
 
     // 5. Sort the inventors by years lived
     const sortLived = inventors.sort((objA, objB) => {
       const a = objA.passed - objA.year;
       const b = objB.passed - objB.year;
       return a < b ? 1: -1;
-    })
-    console.log(sortLived);
+    });
 
     // 6. create a list of Boulevards in Paris that contain 'de' anywhere in the name
     // https://en.wikipedia.org/wiki/Category:Boulevards_in_Paris
-
-
+    // const container = document.querySelector('.mw-category');
+    // const links = Array.from(container.querySelectorAll('a'));
+    // const linksWithDe = links.filter((text) => text.innerText.includes('de'));
+    // console.log(linksWithDe);
 
     // 7. sort Exercise
     // Sort the people alphabetically by last name
+    const firstLast = people.map((a) => a.split(', '))
+    console.log(firstLast);
+    const sortedByName = firstLast.sort((array1, array2) => {
+      const array1LastName = array1[0];
+      const array2LastName = array2[0];
+      return (array1LastName < array2LastName) ? 1: -1;
+    });
+    console.log(sortedByName);
 
 
 
